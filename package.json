@@ -40,7 +40,8 @@
     "lint-staged": "^3.6.1",
     "lodash": "^4.15.0",
     "prettier": "^1.4.4",
-    "stylelint": "^7.3.0"
+    "stylelint": "^7.3.0",
+    "stylelint-config-styled-components-processor": "^0.1.0"
   },
   "dependencies": {
     "babel-traverse": "^6.16.0",
