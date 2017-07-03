@@ -33,9 +33,9 @@ const fixIndentation = str => {
 }
 
 /**
- * Checks if last line of text has whitespaces only
+ * Checks if last line of text has new line only
  */
-const isLastLineWhitespaceOnly = text => {
+const isLastLineNewLineOnly = text => {
   for (let i = text.length - 1; i >= 0; i -= 1) {
     const char = text.charAt(i)
     if (char === '\n') {
@@ -48,6 +48,19 @@ const isLastLineWhitespaceOnly = text => {
   return false
 }
 
+/**
+ * Checks if text is empty or space only
+ */
+const isTextEmptyOrSpaceOnly = text => {
+  for (let i = text.length - 1; i >= 0; i -= 1) {
+    const char = text.charAt(i)
+    if (char === '' || char === ' ') {
+      return true
+    }
+  }
+  return false
+}
+
 // eslint-disable-next-line no-return-assign
 const wrapSelector = content => `.selector${(count += 1)} {${content}}\n`
 const wrapKeyframes = content => `@keyframes {${content}}\n`
@@ -55,4 +68,5 @@ const wrapKeyframes = content => `@keyframes {${content}}\n`
 exports.wrapKeyframes = wrapKeyframes
 exports.wrapSelector = wrapSelector
 exports.fixIndentation = fixIndentation
-exports.isLastLineWhitespaceOnly = isLastLineWhitespaceOnly
+exports.isLastLineNewLineOnly = isLastLineNewLineOnly
+exports.isTextEmptyOrSpaceOnly = isTextEmptyOrSpaceOnly

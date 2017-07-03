@@ -1,4 +1,5 @@
-const isLastLineWhitespaceOnly = require('./general').isLastLineWhitespaceOnly
+const isLastLineNewLineOnly = require('./general').isLastLineNewLineOnly
+const isTextEmptyOrSpaceOnly = require('./general').isTextEmptyOrSpaceOnly
 
 /**
  * Check if a node is a tagged template literal
@@ -21,12 +22,12 @@ const interleave = (quasis, expressions) => {
     const expression = expressions[i]
 
     css += prevText
-    if (isLastLineWhitespaceOnly(prevText)) {
+    if (isLastLineNewLineOnly(prevText)) {
       css += `-styled-mixin: ${expression.name}`
       if (nextText.charAt(0) !== ';') {
         css += ';'
       }
-    } else {
+    } else if (isTextEmptyOrSpaceOnly(prevText)) {
       css += `$${expression.name}`
     }
   }
